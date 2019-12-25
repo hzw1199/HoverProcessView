@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/back_picture"
+        app:layout_constraintDimensionRatio="553:311"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.wuadam.hoverprocess.HoverProcessView
+        android:id="@+id/process"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:duration="1000"
+        app:hoverColor="#80000000"
+        app:layout_constraintDimensionRatio="553:311"
+        app:layout_constraintTop_toTopOf="parent"
+        app:max="100"
+        app:progress="30"
+        app:radius="60dp"
+        app:ringWidth="8dp"
+        app:roundCornerRadius="16dp" />
+
+    <SeekBar
+        android:id="@+id/seek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:max="100"
+        app:layout_constraintBottom_toTopOf="@+id/cb_animate"
+        app:layout_constraintTop_toBottomOf="@+id/process" />
+
+    <CheckBox
+        android:id="@+id/cb_animate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="animate"
+        app:layout_constraintBottom_toTopOf="@+id/btn_infinite_start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seek" />
+
+    <Button
+        android:id="@+id/btn_infinite_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start infinite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_infinite_stop"
+        app:layout_constraintTop_toBottomOf="@+id/cb_animate" />
+
+    <Button
+        android:id="@+id/btn_infinite_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop infinite"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_infinite_start"
+        app:layout_constraintLeft_toRightOf="@+id/btn_infinite_start"
+        app:layout_constraintRight_toRightOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
