@@ -39,7 +39,11 @@ public class HoverProcessView extends View {
 
     private Interpolator interpolator = new AccelerateDecelerateInterpolator();
     private ValueAnimator progressValueAnimator;
-    private int duration = 400;
+
+    /**
+     * 转一圈所需的毫秒数
+     */
+    private int durationFull = 400;
 
     /**
      * View宽度
@@ -126,7 +130,7 @@ public class HoverProcessView extends View {
         max = mTypedArray.getInteger(R.styleable.HoverProcessView_max, max);
         lastProgress = progress = mTypedArray.getInteger(R.styleable.HoverProcessView_progress, progress);
         padding = mTypedArray.getDimension(R.styleable.HoverProcessView_ringPadding, padding);
-        duration = mTypedArray.getInteger(R.styleable.HoverProcessView_duration, duration);
+        durationFull = mTypedArray.getInteger(R.styleable.HoverProcessView_duration, durationFull);
 
         mTypedArray.recycle();
 
@@ -306,6 +310,7 @@ public class HoverProcessView extends View {
             setProgress(progress);
             lastProgress = progress;
         } else {
+            int duration = (int) (Math.abs(progress - start) / (float) max * durationFull);
             stop();
             initValueAnimator();
             progressValueAnimator.setIntValues(start, progress);
@@ -347,7 +352,7 @@ public class HoverProcessView extends View {
         stop();
         initValueAnimator();
         progressValueAnimator.setIntValues(0, 100);
-        progressValueAnimator.setDuration(duration);
+        progressValueAnimator.setDuration(durationFull);
         progressValueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         progressValueAnimator.start();
         isRunning = true;
@@ -397,10 +402,10 @@ public class HoverProcessView extends View {
     }
 
     /**
-     * 设置动画时长
+     * 设置动画转完整一圈所需的毫秒数
      */
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setDurationFull(int durationFull) {
+        this.durationFull = durationFull;
     }
 
     public void setListener(OnHoverProcessListener listener) {
