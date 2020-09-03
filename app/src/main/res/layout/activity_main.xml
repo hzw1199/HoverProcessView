@@ -6,26 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/back_picture"
-        app:layout_constraintDimensionRatio="553:311"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.wuadam.hoverprocess.HoverProcessView
-        android:id="@+id/process"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:duration="1000"
-        app:hoverColor="#80000000"
-        app:layout_constraintDimensionRatio="553:311"
-        app:layout_constraintTop_toTopOf="parent"
-        app:max="100"
-        app:progress="30"
-        app:radius="60dp"
-        app:ringWidth="8dp"
-        app:roundCornerRadius="16dp" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/back_picture" />
+
+        <com.wuadam.hoverprocess.HoverProcessView
+            android:id="@+id/process"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:duration="1000"
+            app:hoverColor="#80000000"
+            app:max="100"
+            app:progress="30"
+            app:radius="48dp"
+            app:ringWidth="4dp"
+            app:roundCornerRadius="8dp" />
+    </androidx.cardview.widget.CardView>
 
     <SeekBar
         android:id="@+id/seek"
@@ -35,7 +43,7 @@
         android:layout_marginRight="32dp"
         android:max="100"
         app:layout_constraintBottom_toTopOf="@+id/cb_animate"
-        app:layout_constraintTop_toBottomOf="@+id/process" />
+        app:layout_constraintTop_toBottomOf="@+id/card" />
 
     <CheckBox
         android:id="@+id/cb_animate"
